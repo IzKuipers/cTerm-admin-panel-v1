@@ -4,12 +4,12 @@
   import { ResErrorData, ResErrorDataType } from "../ts/api";
 
   function dismiss() {
-    ResErrorData.set([false,null,null])
+    ResErrorData.set([false, null, null]);
   }
 </script>
 
 {#if $ResErrorData[0]}
-  <div class="errblind" on:click={dismiss}/>
+  <div class="errblind" on:click={dismiss} />
   <div class="centerAbsolute reserror" class:show={$ResErrorData[0]}>
     <h1 class="title">{$ResErrorData[1].title}</h1>
     <p class="message">{$ResErrorData[1].message}</p>

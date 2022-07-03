@@ -12,6 +12,7 @@
   function logout() {
     gloToken.set(null);
     loggedIn.set(false);
+    displayPage.set(true);
   }
 </script>
 

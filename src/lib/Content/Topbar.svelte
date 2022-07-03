@@ -1,6 +1,8 @@
 <script lang="ts">
   import { onMount } from "svelte";
   import { gloToken, loggedIn } from "../../ts/api";
+  import {CurrentPage, CurrentPageId} from "../../ts/page";
+import Loading from "../Loading.svelte";
 
   let username = "";
 
@@ -15,6 +17,8 @@
 </script>
 
 <div class="topbar">
-  <p><b>cTerm</b> | Administrator Panel</p>
-  <div class="right">{username || "User"} | <button on:click={logout}>Logout</button></div>
+  <p><b>cTerm</b> | Administrator Panel | Page: {$CurrentPageId}</p>
+  <div class="right">
+    {username || "User"} | <button on:click={logout}>Logout</button>
+  </div>
 </div>

@@ -8,19 +8,28 @@ div.content {
   color: #aaa;
 }
 
-div.content button,div.content select,div.content input {
-    padding:5px 10px;
-    border:#aaa 3px solid;
-    background-color: #000;
-    color:#aaa;
+div.content button,
+div.content select,
+div.content input {
+  padding: 5px 10px;
+  border: #aaa 3px solid;
+  background-color: #000;
+  color: #aaa;
 }
 
-div.content button:disabled{
-    opacity: 0.5;
+div.content button:disabled,
+div.content input:disabled,
+div.content select:disabled {
+  opacity: 0.5;
 }
 
 div.content select {
-    min-width: 150px;
+  min-width: 150px;
+}
+
+div.content button:hover {
+  color: #fff;
+  border: #fff 3px solid;
 }
 
 div.content > div {
@@ -72,11 +81,11 @@ div.content div.page {
   height: calc(100% - 95px);
   box-sizing: border-box;
   padding: 20px;
-  overflow-y:scroll
+  overflow-y: scroll;
 }
 
 ::-webkit-scrollbar {
-  display:none;
+  display: none;
 }
 
 div.content > div * {
@@ -99,6 +108,11 @@ div.content > div button.selectoption {
   position: relative;
 }
 
+div.content > div button.selectoption:hover {
+  color: #fff;
+  border: #fff 3px solid;
+}
+
 div.content > div button.selectoption::after {
   content: ">";
   position: absolute;
@@ -115,5 +129,47 @@ div.noadminpanel {
   background-color: #000;
   color: #aaa;
   box-sizing: border-box;
-  padding:20px;
+  padding: 20px;
+}
+
+input[type="checkbox"] {
+  -webkit-appearance: none;
+  appearance: none;
+  margin: 0;
+
+  font: inherit;
+  color: currentColor;
+  width: 25px;
+  height: 25px;
+  border: 3px solid #aaa;
+  border-radius: 0;
+
+  display: inline-block;
+  vertical-align: middle;
+  position: relative;
+  margin-bottom: 5px;
+}
+
+input[type="checkbox"]:checked::before {
+  content: "x";
+  line-height: 0;
+  height: 5px;
+  display: inline-block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+}
+
+input[type="checkbox"]:disabled {
+  opacity: 0.5;
+}
+
+input[type="checkbox"] + label {
+  padding-left:10px;
+  vertical-align: middle;
 }

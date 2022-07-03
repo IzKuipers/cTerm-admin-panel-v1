@@ -1,5 +1,5 @@
 <script lang="ts">
-    import "../../css/sidebar.css";
+  import "../../css/sidebar.css";
   import { Pages } from "../../ts/page";
   import Page from "./Sidebar/Page.svelte";
 </script>

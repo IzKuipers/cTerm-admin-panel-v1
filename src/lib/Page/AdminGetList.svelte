@@ -1,4 +1,5 @@
 <script lang="ts">
+  import Loading from "../Loading.svelte";
   import { APICall, gloToken } from "../../ts/api";
 
   import { onMount } from "svelte";
@@ -14,7 +15,10 @@
   onMount(update);
 
   async function update() {
+    trNames.set(["Username"]);
+    admins = {};
     loading = true;
+    
     const req = await APICall("admin/getlist", {}, $gloToken, true);
 
     if (req.valid) {
@@ -72,5 +76,11 @@
   {/each}
 </table>
 {#if !Object.entries(admins).length}
-  <p>{loading ? "Loading..." : "No users."}</p>
+  <p>
+    {#if loading}
+      <Loading />
+    {:else}
+      No users.
+    {/if}
+  </p>
 {/if}

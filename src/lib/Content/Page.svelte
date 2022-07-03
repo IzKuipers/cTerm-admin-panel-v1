@@ -1,5 +1,5 @@
 <script lang="ts">
-        import "../../css/page.css";
+  import "../../css/page.css";
   import { CurrentPage } from "../../ts/page";
 </script>
 

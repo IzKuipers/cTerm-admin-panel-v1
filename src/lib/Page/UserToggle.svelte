@@ -4,16 +4,28 @@
 
   import { onMount } from "svelte";
   import { writable } from "svelte/store";
+  import Tr from "./UserToggle/Tr.svelte";
 
   let users: { [key: string]: object } = {};
   let loading = false;
 
   const trNames = writable<string[]>(["Username"]);
+  const refreshAll = writable<boolean>(false);
+
+  refreshAll.subscribe((v) => {
+    if (v) {
+      refreshAll.set(false);
+
+      update();
+    }
+  });
 
   onMount(update);
 
   async function update() {
     loading = true;
+    users = {};
+
     const req = await APICall("user/getlist", {}, $gloToken, true);
 
     if (req.valid) {
@@ -36,22 +48,27 @@
   }
 </script>
 
-<h2>Get List</h2>
-<p>Here is a complete list of users on cTerm:</p>
+<h2>Enable or disable users</h2>
+<p>
+  Here is a list of cTerm users where you can choose to disable or enable a
+  user.
+</p>
 <table>
   <tr>
     {#each $trNames as name}
       <td><b>{name}</b></td>
     {/each}
+    <td><b>Toggle</b></td>
   </tr>
   {#each Object.entries(users) as [key, value]}
-    <tr>
-      <td>{key}</td>
+    <Tr {key} {value} bind:refreshAll={$refreshAll}>
       {#each Object.entries(value) as [_, pValue]}
-        {addToTr(_)}
-        <td>{pValue}</td>
+        {#if _ == "role"}
+          {addToTr(_)}
+          <td>{pValue}</td>
+        {/if}
       {/each}
-    </tr>
+    </Tr>
   {/each}
 </table>
 {#if !Object.entries(users).length}

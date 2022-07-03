@@ -2,6 +2,7 @@
   import "../css/login.css";
   import "../css/general.css";
   import { APICall, gloToken, loggedIn } from "../ts/api";
+  import Loading from "./Loading.svelte";
 
   const ascii = `    _______                  
    |__   __|                 
@@ -14,10 +15,12 @@
   let username = "";
   let password = "";
 
+  let loggingIn = false;
+
   let loginButton: HTMLButtonElement;
 
   async function login() {
-    loginButton.innerText = "WAIT...";
+    loggingIn = true;
 
     const token = btoa(`${username}:${password}`);
     const req = await APICall("login", {}, token, true);
@@ -27,7 +30,7 @@
       gloToken.set(req.valid ? token : null);
     }
 
-    loginButton.innerText = req.valid ? "Login" : "Retry";
+    loggingIn = false;
   }
 </script>
 
@@ -36,7 +39,8 @@
     <pre class="center">{ascii}</pre>
     <input placeholder="Username" type="text" bind:value={username} />
     <input placeholder="Password" type="password" bind:value={password} />
-    <button on:click={login} bind:this={loginButton}>Login</button>
+    <button on:click={login}>Login</button>
+    {#if loggingIn}<Loading capt="WAIT" />{/if}
   </div>
 </div>
 

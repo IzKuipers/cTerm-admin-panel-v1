@@ -43,6 +43,7 @@ div.frame button {
   color: #aaa;
   background-color: transparent;
   border: #aaa 2px solid;
+  display:inline-block !important;
 }
 
 div.frame button:active {

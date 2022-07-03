@@ -1,3 +1,12 @@
 table tr td {
-    width: 100px;
+  min-width: 100px;
+  padding-right: 20px;
+}
+
+table.nopad tr td {
+  padding: 2.5px 0;
+}
+
+table tr td *.full {
+  width: 100%;
 }

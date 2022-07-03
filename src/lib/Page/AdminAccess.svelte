@@ -2,6 +2,8 @@
   import { APICall, gloToken } from "../../ts/api";
 
   import { onMount } from "svelte";
+  import Loading from "../Loading.svelte";
+  import GrantOption from "./AdminAccess/GrantOption.svelte";
 
   let reguls: { [key: string]: object } = {};
   let admins: { [key: string]: object } = {};
@@ -65,13 +67,13 @@
 </p>
 <br />
 {#if loading}
-  <p>Loading...</p>
+  <Loading />
 {:else}
   <h3>Grant Admin</h3>
   <p>You can grant admin to one of many regular users.</p>
   <select bind:value={grantInput}>
     {#each Object.entries(reguls) as [aKey, _]}
-      {#if !admins[aKey]}<option>{aKey}</option>{/if}
+      <GrantOption user={aKey} data={_} {admins} />
     {/each}
   </select>
   <button on:click={grant} disabled={!revokeInput}>Grant</button><br /><br />

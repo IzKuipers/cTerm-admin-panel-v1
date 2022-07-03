@@ -4,10 +4,17 @@ import AdminGetList from "../lib/Page/AdminGetList.svelte";
 import AdminAccess from "../lib/Page/AdminAccess.svelte";
 import User from "../lib/Page/User.svelte";
 import UserGetList from "../lib/Page/UserGetList.svelte";
+import UserPreferences from "../lib/Page/UserPreferences.svelte";
+import UserToggleSvelte from "../lib/Page/UserToggle.svelte";
+import UserBansSvelte from "../lib/Page/UserBans.svelte";
+import UserCreate from "../lib/Page/UserCreate.svelte";
+import UserDelete from "../lib/Page/UserDelete.svelte";
+import AdminChangePswd from "../lib/Page/AdminChangePswd.svelte";
 
 import { navigate } from "svelte-navigator";
 import { get, writable } from "svelte/store";
 import { APICall, gloToken, ResErrorData } from "./api";
+
 
 export const params = new URLSearchParams(location.search);
 
@@ -107,35 +114,42 @@ export const Pages = new Map<string, Page>([
     "userPreferences",
     {
       caption: "Man. Users > Preferences",
-      content: Overview,
+      content: UserPreferences,
     },
   ],
   [
     "userToggle",
     {
       caption: "Man. Users > En- Disable",
-      content: Overview,
+      content: UserToggleSvelte,
     },
   ],
   [
     "userBans",
     {
       caption: "Man. Users > Ban / Unban",
-      content: Overview,
+      content: UserBansSvelte,
     },
   ],
   [
     "userCreate",
     {
       caption: "Man. Users > Create User",
-      content: Overview,
+      content: UserCreate,
     },
   ],
   [
     "userDelete",
     {
       caption: "Man. Users > Delete User",
-      content: Overview,
+      content: UserDelete,
+    },
+  ],
+  [
+    "userResetPswd",
+    {
+      caption: "Man. Users > Password",
+      content: AdminChangePswd,
     },
   ],
 ]);
