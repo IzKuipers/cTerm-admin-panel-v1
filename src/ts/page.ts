@@ -2,11 +2,12 @@ import Overview from "../lib/Page/Overview.svelte";
 import Admin from "../lib/Page/Admin.svelte";
 import AdminGetList from "../lib/Page/AdminGetList.svelte";
 import AdminAccess from "../lib/Page/AdminAccess.svelte";
+import User from "../lib/Page/User.svelte";
+import UserGetList from "../lib/Page/UserGetList.svelte";
 
 import { navigate } from "svelte-navigator";
 import { get, writable } from "svelte/store";
 import { APICall, gloToken, ResErrorData } from "./api";
-
 
 export const params = new URLSearchParams(location.search);
 
@@ -30,14 +31,20 @@ export async function switchPage(pageId: string) {
   }
 
   if (get(gloToken)) {
-    const req = await APICall("user/isadmin",{},get(gloToken),true);
+    const req = await APICall("user/isadmin", {}, get(gloToken), true);
 
     if (req.valid && !req.data.admin) {
-        ResErrorData.set([true,{
-            title:"Hold up!",
-            message:"You aren't an admin, so this page won't mean anything useful to you... All admin checks are backend operated, you will not be able to do anything here.",
-            code:0o0
-        },"(admincheck)"])
+      ResErrorData.set([
+        true,
+        {
+          title: "Hold up!",
+          message:
+            "You aren't an admin, so this page won't mean anything useful to you... All admin checks are backend operated, you will not be able to do anything here.",
+          code: 0o0,
+        },
+        "(admincheck)",
+      ]);
+      displayPage.set(false);
     }
   }
 }
@@ -48,6 +55,8 @@ export function checkParamPage() {
   if (page) switchPage(page);
   else switchPage(defaultPage);
 }
+
+export const displayPage = writable<boolean>(true);
 
 export const CurrentPage = writable<Page>();
 export const CurrentPageId = writable<string>();
@@ -84,13 +93,20 @@ export const Pages = new Map<string, Page>([
     "user",
     {
       caption: "Manage Users",
-      content: Overview,
+      content: User,
     },
   ],
   [
     "userGetList",
     {
       caption: "Man. Users > Get List",
+      content: UserGetList,
+    },
+  ],
+  [
+    "userPreferences",
+    {
+      caption: "Man. Users > Preferences",
       content: Overview,
     },
   ],

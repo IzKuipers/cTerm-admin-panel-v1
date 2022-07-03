@@ -72,17 +72,22 @@ div.content div.page {
   height: calc(100% - 95px);
   box-sizing: border-box;
   padding: 20px;
+  overflow-y:scroll
 }
 
-div.content > div.page * {
+::-webkit-scrollbar {
+  display:none;
+}
+
+div.content > div * {
   margin: 0;
 }
 
-div.content > div.page p {
+div.content > div p {
   margin: 10px 0;
 }
 
-div.content > div.page button.selectoption {
+div.content > div button.selectoption {
   width: 400px;
   padding: 20px;
   border: #aaa 3px solid;
@@ -94,9 +99,21 @@ div.content > div.page button.selectoption {
   position: relative;
 }
 
-div.content > div.page button.selectoption::after {
+div.content > div button.selectoption::after {
   content: ">";
   position: absolute;
   top: 20px;
   right: 20px;
+}
+
+div.noadminpanel {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  width: calc(100% - 10px);
+  height: calc(100% - 10px);
+  background-color: #000;
+  color: #aaa;
+  box-sizing: border-box;
+  padding:20px;
 }
