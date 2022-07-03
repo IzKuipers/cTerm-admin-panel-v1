@@ -20,6 +20,7 @@
   }
 
   async function change() {
+    loading = true;
     const req = await APICall(
       "admin/changepswd",
       {
@@ -29,8 +30,18 @@
       $gloToken,
       true
     );
+    loading = true;
+
+    const currentUser = atob($gloToken).split(":")[0];
+
+    if (currentUser == username) {
+      gloToken.set(btoa(`${currentUser}:${password}`));
+    }
 
     update();
+
+    password = "";
+    username = "";
   }
 
   onMount(update);
