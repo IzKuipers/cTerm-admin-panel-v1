@@ -1,0 +1,22 @@
+div.sidebar button.page {
+    background-color: transparent;
+    color:#aaa;
+    display:block;
+    width:100%;
+    box-sizing: border-box;
+    padding:10px;
+    text-align: left;
+    border: #aaa 3px solid;
+    margin-bottom: 5px;
+}
+
+div.sidebar button.page.selected {
+    background-color: transparent;
+    color:#fff;
+    display:block;
+    width:100%;
+    box-sizing: border-box;
+    padding:10px;
+    text-align: left;
+    border: #fff 3px solid;
+}

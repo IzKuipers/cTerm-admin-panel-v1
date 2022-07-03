@@ -1,0 +1,76 @@
+div.app {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  background-color: #000;
+  font-family: "Source Code Pro", monospace;
+}
+
+div.app * {
+  color: #aaa;
+}
+
+div.frame {
+  padding: 1.3em;
+}
+
+div.frame input,
+div.frame button {
+  /*border:#555 1px solid;*/
+  color: #aaa;
+  background-color: transparent;
+  border: #aaa 2px solid;
+  font-family: "Source Code Pro", monospace;
+  display: block;
+  padding: 5px;
+}
+
+div.frame input:focus,div.frame button:hover {
+    color:#fff;
+    border: #fff 2px solid;
+}
+
+div.frame input {
+  min-width: 250px;
+  margin-bottom: 10px;
+}
+
+div.frame button {
+  margin-top: 15px;
+  padding: 5px 15px;
+  color: #aaa;
+  background-color: transparent;
+  border: #aaa 2px solid;
+}
+
+div.frame button:active {
+    color: #888;
+    border: #888 2px solid;
+}
+
+div.frame h1 {
+  margin: 15px 0;
+  font-size: 27px;
+  font-weight: bolder;
+  text-align: center;
+}
+
+div.frame pre.center {
+  text-align: center;
+}
+
+::-webkit-input-placeholder {
+  /* Edge */
+  color: #aaa;
+}
+
+:-ms-input-placeholder {
+  /* Internet Explorer 10-11 */
+  color: #aaa;
+}
+
+::placeholder {
+  color: #aaa;
+}

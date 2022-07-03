@@ -1,0 +1,102 @@
+div.content {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  background-color: #000;
+  color: #aaa;
+}
+
+div.content button,div.content select,div.content input {
+    padding:5px 10px;
+    border:#aaa 3px solid;
+    background-color: #000;
+    color:#aaa;
+}
+
+div.content button:disabled{
+    opacity: 0.5;
+}
+
+div.content select {
+    min-width: 150px;
+}
+
+div.content > div {
+  position: absolute;
+  background-color: #000;
+  border: #aaa 3px solid;
+}
+
+div.content > div * {
+  font-family: "Source Code Pro", monospace;
+}
+
+div.content > div *:not(h1, h2, h3, h4, h5) {
+  font-size: 15px;
+}
+
+div.content div.topbar {
+  top: 5px;
+  left: 5px;
+  width: calc(100% - 10px);
+  height: 80px;
+  padding: 25px 30px;
+  box-sizing: border-box;
+}
+
+div.content div.topbar * {
+  margin: 0;
+}
+
+div.content div.topbar div.right {
+  position: absolute;
+  right: 30px;
+  top: 20px;
+}
+
+div.content div.sidebar {
+  top: 90px;
+  left: 5px;
+  width: calc(300px);
+  height: calc(100% - 95px);
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+div.content div.page {
+  top: 90px;
+  left: 310px;
+  width: calc(100% - 315px);
+  height: calc(100% - 95px);
+  box-sizing: border-box;
+  padding: 20px;
+}
+
+div.content > div.page * {
+  margin: 0;
+}
+
+div.content > div.page p {
+  margin: 10px 0;
+}
+
+div.content > div.page button.selectoption {
+  width: 400px;
+  padding: 20px;
+  border: #aaa 3px solid;
+  text-align: left;
+  display: block;
+  margin-bottom: 5px;
+  background-color: #000;
+  color: #aaa;
+  position: relative;
+}
+
+div.content > div.page button.selectoption::after {
+  content: ">";
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
