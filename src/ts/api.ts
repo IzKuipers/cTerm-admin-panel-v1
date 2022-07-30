@@ -1,6 +1,6 @@
 import { writable } from "svelte/store";
 
-export const server = "twihub.tk:3333";
+export const server = "twiserver.nl:3333";
 
 export const loggedIn = writable<boolean>(false);
 export const gloToken = writable<string>(null);
