@@ -1,6 +1,6 @@
 import { writable } from "svelte/store";
 
-export const server = "twiserver.nl:3333";
+export const server = "ctapi.twiserver.nl";
 
 export const loggedIn = writable<boolean>(false);
 export const gloToken = writable<string>(null);
@@ -24,7 +24,7 @@ export async function APICall(
   }
 
   const req = await fetch(
-    `http://${server}/${path}${paramStr}`,
+    `https://${server}/${path}${paramStr}`,
     authToken ? init : {}
   );
 
